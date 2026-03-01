@@ -1,39 +1,36 @@
-from shop_counter.inventory import show_products
-from shop_counter.sales import buy_item
-import json
+# main.py
+import argparse
+from shop_counter.inventory import Inventory
+from shop_counter.sales import Sale
 
-def load_sales():
-    try:
-        with open("sales_history.json", "r") as f:
-            print("\n--- Past Sales ---")
-            for line in f:
-                print(line.strip())
-    except FileNotFoundError:
-        print("No past sales found.")
-
+# <<< CHANGED >>> Replaced manual menu with argparse CLI
 def main():
-    while True:
-        print("\n--- Shop Counter ---")
-        print("1. Show Products")
-        print("2. Buy Item")
-        print("3. View Sales History")
-        print("4. Exit")
+    parser = argparse.ArgumentParser(description="Shop Counter CLI")
+    parser.add_argument("command", choices=["show", "buy", "history"], help="Action to perform")
+    parser.add_argument("--item", help="Product name (for buy)")
+    parser.add_argument("--qty", type=int, help="Quantity (for buy)")
+    args = parser.parse_args()
 
-        choice = input("Enter choice: ")
+    inv = Inventory()
 
-        if choice == "1":
-            show_products()
-        elif choice == "2":
-            item = input("Enter product name: ")
-            qty = int(input("Enter quantity: "))
-            buy_item(item, qty)
-        elif choice == "3":
-            load_sales()
-        elif choice == "4":
-            print("Goodbye!")
-            break
+    if args.command == "show":
+        inv.show_products()
+    elif args.command == "buy":
+        if inv.update_stock(args.item, args.qty):
+            total = inv.items[args.item].price * args.qty
+            sale = Sale(args.item, args.qty, total)
+            sale.save()
+            print(f"✅ Bought {args.qty} {args.item}(s) for {total} KES.")
         else:
-            print("Invalid choice, try again.")
+            print("❌ Not enough stock or item not found.")
+    elif args.command == "history":
+        try:
+            with open("sales_history.json", "r") as f:
+                print("\n--- Past Sales ---")
+                for line in f:
+                    print(line.strip())
+        except FileNotFoundError:
+            print("No past sales found.")
 
 if __name__ == "__main__":
     main()

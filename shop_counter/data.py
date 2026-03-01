@@ -1,3 +1,5 @@
+# shop_counter/data.py
+
 products = {
     "smartphone": {
         "id": "P001",
@@ -174,69 +176,5 @@ products = {
         "price": 1500,
         "stock": 70,
         "warranty": "12 months"
-    },
-    "extension_cable": {
-        "id": "P023",
-        "brand": "Philips",
-        "category": "Electrical",
-        "price": 1200,
-        "stock": 60,
-        "warranty": "12 months"
-    },
-    "electric_kettle": {
-        "id": "P024",
-        "brand": "Ramtons",
-        "category": "Appliances",
-        "price": 3500,
-        "stock": 25,
-        "warranty": "12 months"
-    },
-    "microwave": {
-        "id": "P025",
-        "brand": "Samsung",
-        "category": "Appliances",
-        "price": 15000,
-        "stock": 12,
-        "warranty": "24 months"
-    },
-    "fridge": {
-        "id": "P026",
-        "brand": "LG",
-        "category": "Appliances",
-        "price": 60000,
-        "stock": 4,
-        "warranty": "36 months"
-    },
-    "washing_machine": {
-        "id": "P027",
-        "brand": "Bosch",
-        "category": "Appliances",
-        "price": 75000,
-        "stock": 3,
-        "warranty": "36 months"
-    },
-    "iron_box": {
-        "id": "P028",
-        "brand": "Philips",
-        "category": "Appliances",
-        "price": 2500,
-        "stock": 40,
-        "warranty": "12 months"
-    },
-    "fan": {
-        "id": "P029",
-        "brand": "Ramtons",
-        "category": "Appliances",
-        "price": 5000,
-        "stock": 20,
-        "warranty": "12 months"
-    },
-    "air_conditioner": {
-        "id": "P030",
-        "brand": "Samsung",
-        "category": "Appliances",
-        "price": 85000,
-        "stock": 2,
-        "warranty": "36 months"
     }
 }
