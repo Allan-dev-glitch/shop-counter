@@ -1,4 +1,4 @@
-from shop_counter.data import products
+from shopping_counter.data import products
 
 
 class Product:

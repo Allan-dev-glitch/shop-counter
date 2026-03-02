@@ -1,5 +1,5 @@
 
-from shop_counter.inventory import Inventory
+from shopping_counter.inventory import Inventory
 
 inv = Inventory()
 

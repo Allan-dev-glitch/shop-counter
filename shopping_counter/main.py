@@ -1,9 +1,9 @@
 # main.py
 import argparse
-from shop_counter.inventory import Inventory
-from shop_counter.sales import Sale
+from shopping_counter.inventory import Inventory
+from shopping_counter.sales import Sale
 
-# <<< CHANGED >>> Replaced manual menu with argparse CLI
+
 def main():
     parser = argparse.ArgumentParser(description="Shop Counter CLI")
     parser.add_argument("command", choices=["show", "buy", "history"], help="Action to perform")
